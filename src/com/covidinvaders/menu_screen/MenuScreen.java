@@ -27,7 +27,15 @@ public class MenuScreen extends SuperStateMachine implements KeyListener {
         openingTheme = new Sound("/com/covidinvaders/sounds/openingTheme.wav");
 
         //if (!openingTheme)
+        this.start();
+    }
+
+    public void start(){
         openingTheme.play();
+    }
+
+    public void stop(){
+        openingTheme.stop();
     }
 
     @Override

@@ -77,7 +77,7 @@ public class Level1 implements SuperLevel, Runnable {
 
         hasDirectionChange(delta);
         bulletHandler.update(delta, blocks, player);
-        this.start();
+        //this.start();
     }
 
     @Override

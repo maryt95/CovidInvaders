@@ -2,6 +2,7 @@ package com.covidinvaders.game_screen;
 
 import com.covidinvaders.display.Display;
 import com.covidinvaders.levels.Level1;
+import com.covidinvaders.menu_screen.MenuScreen;
 import com.covidinvaders.state.StateMachine;
 import com.covidinvaders.state.SuperStateMachine;
 import com.covidinvaders.timer.TickTimer;
@@ -15,6 +16,7 @@ public class GameScreen extends SuperStateMachine {
     private BasicBlocks blocks;
     private Level1 level;
     private EnemyBulletHandler bulletHandler;
+    private MenuScreen menuScreen;
 
     public static int SCORE = 0;
 
@@ -29,6 +31,7 @@ public class GameScreen extends SuperStateMachine {
         bulletHandler = new EnemyBulletHandler();
         player = new Player(375, 500, 50, 50, blocks);
         level  = new Level1(player, bulletHandler);
+        menuScreen = new MenuScreen(stateMachine);
     }
 
     @Override
@@ -36,13 +39,18 @@ public class GameScreen extends SuperStateMachine {
         player.update(delta);
         level.update(delta, blocks);
 
+        level.start();
+        menuScreen.stop();
+
         if (level.isGameOver()){
             gameOverTimer.tick(delta);
             if (gameOverTimer.isEventReady()){
+                level.stop();
                 level.reset();
                 blocks.reset();
                 getStateMachine().setState((byte) 0);
                 SCORE = 0;
+                menuScreen.start();
             }
         }
 
