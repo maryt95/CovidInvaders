@@ -9,6 +9,8 @@ import com.covidinvaders.explosion.ExplosionManager;
 import java.awt.*;
 import java.util.ArrayList;
 
+/* Classe che serve per definire l'arma del mio avatar e il suono che
+* farò partire a ogni sparo. */
 public class PlayerWeapons {
 
     private Timer timer;

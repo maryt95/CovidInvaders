@@ -75,9 +75,9 @@ public class EnemyBasicBullet extends EnemyWeaponType {
         if (bullet == null)
             return;
 
-        for (int w = 0; w < barriere.barriera.size(); w++){
-            if (bullet.intersects(barriere.barriera.get(w))){
-                barriere.barriera.remove(w);
+        for (int w = 0; w < barriere.barriere.size(); w++){
+            if (bullet.intersects(barriere.barriere.get(w))){
+                barriere.barriere.remove(w);
                 bullet = null;
                 break;
             }

@@ -3,9 +3,10 @@ package com.covidinvaders.game_screen;
 import java.awt.*;
 import java.util.ArrayList;
 
+/* Mi serve per disegnare le barriere di difesa, definisco le forme, le posizioni e i colori*/
 public class BasicBlocks {
 
-    public ArrayList<Rectangle> barriera = new ArrayList<Rectangle>();
+    public ArrayList<Rectangle> barriere = new ArrayList<Rectangle>();
 
     public BasicBlocks(){
         basicBlocks(75, 450);
@@ -16,8 +17,8 @@ public class BasicBlocks {
 
     public void draw(Graphics2D g){
         g.setColor(Color.GREEN);
-        for (int i = 0; i< barriera.size(); i++){
-            g.fill(barriera.get(i));
+        for (int i = 0; i< barriere.size(); i++){
+            g.fill(barriere.get(i));
         }
     }
 
@@ -51,12 +52,12 @@ public class BasicBlocks {
     public void row(int rows, int xPos, int yPos){
         for (int i = 0; i < rows; i++){
             Rectangle mattoncino = new Rectangle(xPos + (i*3), yPos, 3, 3);
-            this.barriera.add(mattoncino);
+            this.barriere.add(mattoncino);
         }
     }
 
     public void reset(){
-        barriera.clear();
+        barriere.clear();
 
         basicBlocks(75, 450);
         basicBlocks(275, 450);

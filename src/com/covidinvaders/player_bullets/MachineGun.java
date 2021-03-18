@@ -63,9 +63,9 @@ public class MachineGun extends PlayerWeaponType{
 
     @Override
     protected void wallCollide(BasicBlocks blocks) {
-        for (int i = 0; i < blocks.barriera.size(); i++){
-            if (bullet.intersects(blocks.barriera.get(i))){
-                blocks.barriera.remove(i);
+        for (int i = 0; i < blocks.barriere.size(); i++){
+            if (bullet.intersects(blocks.barriere.get(i))){
+                blocks.barriere.remove(i);
                 bullet = null;
                 return;
             }

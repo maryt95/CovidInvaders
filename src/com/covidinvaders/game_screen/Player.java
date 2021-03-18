@@ -10,6 +10,9 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URL;
 
+/* Classe che mi serve per definire il mio player in base alla
+* pressione dei tasti (che il mio codice recepisce tramite il keylistener) */
+
 public class Player implements KeyListener {
 
     private final double speed = 5.0d;
@@ -28,6 +31,8 @@ public class Player implements KeyListener {
 
     public PlayerWeapons playerWeapons;
 
+    /* Definisco il rettangolo in cui disegnerò il mio player e inserisco l'immagine che assocerò
+    * al mio avatar. Definisco quindi anche le armi che utilizzerò. */
     public Player(double xPos, double yPos, int width, int height, BasicBlocks blocks) {
         this.xPos = xPos;
         this.yPos = yPos;

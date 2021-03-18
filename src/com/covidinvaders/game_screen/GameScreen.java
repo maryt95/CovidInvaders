@@ -10,6 +10,10 @@ import com.covidinvaders.handler.EnemyBulletHandler;
 
 import java.awt.*;
 
+/* Serve per definire la schermata di gioco con le righe dei punteggi e della vita.
+* Inserisco nel GameScreen tutti gli elementi definiti nel costruttore,
+* ovvero le barriere, i proiettili, il giocatore, il settaggio del livello di gioco
+* e la schermata iniziale.*/
 public class GameScreen extends SuperStateMachine {
 
     private Player player;
@@ -35,6 +39,12 @@ public class GameScreen extends SuperStateMachine {
     }
 
     @Override
+    /* Aggiorno il player e il livello aggiungendo le barriere.
+    * A questo punto faccio partire il primo livello e interrompo
+    * la schermata del menu.
+    * Se sono andato in gameover faccio un reset del livello, mostro nuovamente
+    * il menù principale e faccio ripartire la musica iniziale.
+    * Se il livello invece è completo ricomincio semplicemente il livello da capo.*/
     public void update(double delta) {
         player.update(delta);
         level.update(delta, blocks);
@@ -63,6 +73,10 @@ public class GameScreen extends SuperStateMachine {
     }
 
     @Override
+    /* Mi serve per disegnare la stringa della vita e del punteggio.
+    * Disegno i blocchi, il player e poi il livello.
+    * In questo metodo disegno la scritta del game over o del livello completo
+    * al centro del display. */
     public void draw(Graphics2D g) {
         g.setColor(Color.white);
         g.drawString("Score: " + SCORE , 5, 15);
@@ -92,6 +106,7 @@ public class GameScreen extends SuperStateMachine {
     }
 
     @Override
+    /* Il keylistener serve per far funzionare il gioco alla pressione dei tasti della tastiera. */
     public void init(Canvas canvas) {
         canvas.addKeyListener(player);
     }
