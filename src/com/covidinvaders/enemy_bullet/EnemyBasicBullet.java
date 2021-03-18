@@ -6,6 +6,11 @@ import com.covidinvaders.game_screen.Player;
 
 import java.awt.*;
 
+/*
+* Serve per disegnare i proiettili dei nemici, estende la classe astratta
+* EnemyWeaponType che definisce i metodi base che i proiettili devono
+* implementare
+*/
 public class EnemyBasicBullet extends EnemyWeaponType {
 
     private Rectangle bullet;
@@ -20,6 +25,8 @@ public class EnemyBasicBullet extends EnemyWeaponType {
     }
 
     @Override
+    /* Mi serve per disegnare i proiettili. Se non esistono
+    * proiettili esco dal metodo. */
     public void draw(Graphics2D g) {
         if (bullet == null) {
             return;
@@ -30,6 +37,9 @@ public class EnemyBasicBullet extends EnemyWeaponType {
     }
 
     @Override
+    /* Serve per fare l'update della posizione delta dei proiettili e
+    * delle barriere quando vengono colpite. Aggiorno la posizione y
+    * aggiungendo alla posizione iniziale lo spostamento delta per la velocità. */
     public void update(double delta, BasicBlocks blocks, Player player) {
         if (bullet == null) {
             return;
@@ -37,12 +47,13 @@ public class EnemyBasicBullet extends EnemyWeaponType {
 
         setyPos((int) (getyPos() + (delta * speed)));
         bullet.y = getyPos();
-
         isOutofBounds();
         wallCollide(blocks);
     }
 
     @Override
+    /* Se il proiettile esiste e se si interseca
+    * con la barriera allora la collisione è true. */
     public boolean collision(Rectangle rect) {
 
         if (bullet != null && bullet.intersects(rect)){
@@ -58,13 +69,15 @@ public class EnemyBasicBullet extends EnemyWeaponType {
     }
 
     @Override
-    protected void wallCollide(BasicBlocks blocks) {
+    /* Se il proiettile nemico interseca la barriera allora rimuovo
+    * il 'mattoncino' w dalla barriera ed elimino il proiettile. */
+    protected void wallCollide(BasicBlocks barriere) {
         if (bullet == null)
             return;
 
-        for (int w = 0; w < blocks.barriera.size(); w++){
-            if (bullet.intersects(blocks.barriera.get(w))){
-                blocks.barriera.remove(w);
+        for (int w = 0; w < barriere.barriera.size(); w++){
+            if (bullet.intersects(barriere.barriera.get(w))){
+                barriere.barriera.remove(w);
                 bullet = null;
                 break;
             }
@@ -72,6 +85,8 @@ public class EnemyBasicBullet extends EnemyWeaponType {
     }
 
     @Override
+    /* Se il proiettile va oltre le dimensioni del display
+    * allora setto a null il proiettile */
     protected void isOutofBounds() {
         if (bullet != null && bullet.y < 0 || bullet.y > Display.HEIGHT || bullet.x < 0 || bullet.x > Display.WIDTH) bullet = null;
     }

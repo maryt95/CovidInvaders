@@ -14,6 +14,9 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.Random;
 
+/* Estende la classe astratta EnemyType e l'override dei suoi metodi.
+* Serve per definire la figura del nemico che incontrerò nel livello. */
+
 public class EnemyTypeBasic extends EnemyType {
 
     private double speed = 1.0d;
@@ -26,6 +29,9 @@ public class EnemyTypeBasic extends EnemyType {
 
     private Sound explosionSound;
 
+    /* Costruttore della classe. Definisco l'immagine che utilizzerò per disegnare il nemico
+    * insieme al rettangolo in cui sarà disegnato, al tempo di sparo e al suono che farà al momento
+    * della sua esplosione. */
     public EnemyTypeBasic(double xPos, double yPos, int rows, int columns, EnemyBulletHandler bulletHandler) {
         super(bulletHandler);
 
@@ -49,6 +55,7 @@ public class EnemyTypeBasic extends EnemyType {
     }
 
     @Override
+    /* Aggiorno la posizione del singolo nemico e dello sparo. */
     public void update(double delta, Player player, BasicBlocks blocks) {
         enemySprite.update(delta);
 
@@ -62,8 +69,10 @@ public class EnemyTypeBasic extends EnemyType {
     }
 
     @Override
+    /* In questo metodo definisco il cambio di direzione dell'array
+    * dei nemici insieme alla velocità con cui avviene il cambio di direzione. */
     public void changeDirection(double delta) {
-        speed *= -1.15d;
+        speed *= -1.05d;
         enemySprite.setxPos(enemySprite.getxPos() - (delta * speed));
         this.getRect().x = (int) enemySprite.getxPos();
 
@@ -72,6 +81,7 @@ public class EnemyTypeBasic extends EnemyType {
     }
 
     @Override
+    /* Quando un nemico viene colpito faccio partire il suono dell'esplosione del nemico. */
     public boolean deathScene() {
         if (!enemySprite.isPlay())
             return false;
@@ -87,6 +97,10 @@ public class EnemyTypeBasic extends EnemyType {
     }
 
     @Override
+    /* Quando c'è la collisione rimuovo il nemico dalla lista dei nemici con
+    * l'animazione relativa all'esplosione.
+    * Se la lista dei nemici non è nulla e il mio proiettile colpisce il rettangolo del nemico
+    * allora faccio partire l'esplosione e aggiungo otto punti al mio punteggio. */
     public boolean collide(int i, Player player, BasicBlocks blocks, ArrayList<EnemyType> enemys) {
         if (enemySprite.isPlay()){
             if (enemys.get(i).deathScene()){
@@ -109,9 +123,9 @@ public class EnemyTypeBasic extends EnemyType {
     }
 
     @Override
+    /* Serve per sapere se sono oltre la larghezza del display */
     public boolean isOutOfBounds() {
-        if (rect.x > 0 && rect.x < Display.WIDTH - rect.width) return false;
-        return true;
+        return rect.x <= 0 || rect.x >= Display.WIDTH - rect.width;
     }
 
     public Rectangle getRect() {

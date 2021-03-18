@@ -5,6 +5,7 @@ import com.covidinvaders.game_screen.Player;
 
 import java.awt.*;
 
+/* Serve per definire i metodi base che dovrà avere ogni tipo di proiettile. */
 public abstract class EnemyWeaponType {
 
     public abstract void draw(Graphics2D g);
