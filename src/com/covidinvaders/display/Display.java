@@ -111,6 +111,11 @@ public class Display extends Canvas implements Runnable {
         }
     }
 
+    /*
+    * Mi serve per disegnare il rettangolo di gioco. Gli passo
+    * le dimensioni della finestra di gioco con un margine di 50px.
+    * BufferStrategy è una classe che estende JFrame e serve per riempire
+    * il rettangolo di gioco. */
     public void draw(BufferStrategy bs) {
         do {
             do {
