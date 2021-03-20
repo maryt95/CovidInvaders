@@ -9,6 +9,9 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 
+/* Classe che si occupa di settare le immagini all'interno del gioco importandole
+* da url per poi renderizzarle, di aggiungerle alla schermata di gioco e di mandarle
+* in loop nel caso in cui l'animazione finisca.*/
 public class SpriteAnimation {
 
     private ArrayList<BufferedImage> sprites = new ArrayList<BufferedImage>();

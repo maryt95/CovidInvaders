@@ -3,6 +3,9 @@ package com.covidinvaders.sound;
 import javax.sound.sampled.*;
 import java.net.URL;
 
+/* Classe che mi serve per gestire le musiche e i suoni presenti all'interno del gioco.
+* Si occupa di importare il suono, farlo partire, mandarlo in loop o eventualmente
+* farlo fermare. */
 public class Sound implements LineListener {
 
     private Clip soundClip;

@@ -6,7 +6,13 @@ import com.covidinvaders.menu_screen.MenuScreen;
 import java.awt.*;
 import java.util.ArrayList;
 
+/* Classe che si occupa di settare gli stati del gioco,
+* ovvero di fare lo switch tra una schermata e l'altra
+* (come quella del menù e del gioco). In base allo stato selezionato
+* si occupa di prendere il metodo draw e update dello 'stato'
+* corrispondente.*/
 public class StateMachine {
+
     private ArrayList<SuperStateMachine> states = new ArrayList<SuperStateMachine>();
     private Canvas canvas;
     private byte selectState = 0;
