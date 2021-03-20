@@ -9,6 +9,7 @@ import com.covidinvaders.timer.TickTimer;
 import com.covidinvaders.handler.EnemyBulletHandler;
 
 import java.awt.*;
+import java.awt.event.KeyEvent;
 
 /* Serve per definire la schermata di gioco con le righe dei punteggi e della vita.
 * Inserisco nel GameScreen tutti gli elementi definiti nel costruttore,

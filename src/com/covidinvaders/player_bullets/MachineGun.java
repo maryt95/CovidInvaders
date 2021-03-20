@@ -5,6 +5,10 @@ import com.covidinvaders.game_screen.BasicBlocks;
 
 import java.awt.*;
 
+/* Classe che serve per settare i proiettili del player.
+* Definisco la posizione, il colore e la grandezza del rettangolo
+* corrispondente all'arma e gestisco le collisioni con il nemico e le barriere.
+* Se il proiettile esce dal display lo setto a null. */
 public class MachineGun extends PlayerWeaponType{
 
     private  Rectangle bullet;

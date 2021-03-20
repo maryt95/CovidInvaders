@@ -42,6 +42,7 @@ public class PlayerWeapons {
         }
     }
 
+    /* Setto il tempo di sparo e il suono insieme al punto da cui parte */
     public void shootBullet(double xPos, double yPos, int width, int height) {
         if (timer.timerEvent(250)) {
             if (shootSound.isPlaying()) {

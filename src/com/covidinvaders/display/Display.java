@@ -4,6 +4,8 @@ import com.covidinvaders.state.StateMachine;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.image.BufferStrategy;
 
 /*
@@ -61,7 +63,9 @@ public class Display extends Canvas implements Runnable {
 
         state = new StateMachine(this);
         state.setState((byte) 0);
+
     }
+
 
     @Override
     /*

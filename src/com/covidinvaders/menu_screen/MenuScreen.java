@@ -6,12 +6,18 @@ import com.covidinvaders.sound.Sound;
 import com.covidinvaders.state.StateMachine;
 import com.covidinvaders.state.SuperStateMachine;
 
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.io.File;
 import java.net.URL;
 
+/* Classe che gestisce il menù iniziale.
+* Inserisco la musica della opening e creo gli elementi che dovrò mostrare nella schermata
+* del menù, come i testi. Richiamo la classe font e mi faccio l'import
+* dello stile delle scritte dalla cartella dei package e le distribuisco in
+* una certa posizione nel display. */
 public class MenuScreen extends SuperStateMachine implements KeyListener {
 
     private Font titolo;
@@ -21,6 +27,7 @@ public class MenuScreen extends SuperStateMachine implements KeyListener {
     private String stringaStart = "PREMI INVIO PER COMINCIARE";
 
     private Sound openingTheme;
+    private Frame frame;
 
     public MenuScreen(StateMachine stateMachine) {
         super(stateMachine);
@@ -30,11 +37,12 @@ public class MenuScreen extends SuperStateMachine implements KeyListener {
         this.start();
     }
 
-    public void start(){
+    public void start() {
         openingTheme.play();
+        openingTheme.loop();
     }
 
-    public void stop(){
+    public void stop() {
         openingTheme.stop();
     }
 
@@ -77,7 +85,6 @@ public class MenuScreen extends SuperStateMachine implements KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
-
     }
 
     @Override

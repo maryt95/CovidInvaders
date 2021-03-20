@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.net.URL;
 
 /* Classe che mi serve per definire il mio player in base alla
-* pressione dei tasti (che il mio codice recepisce tramite il keylistener) */
+ * pressione dei tasti (che il mio codice recepisce tramite il keylistener) */
 
 public class Player implements KeyListener {
 
@@ -32,7 +32,7 @@ public class Player implements KeyListener {
     public PlayerWeapons playerWeapons;
 
     /* Definisco il rettangolo in cui disegnerò il mio player e inserisco l'immagine che assocerò
-    * al mio avatar. Definisco quindi anche le armi che utilizzerò. */
+     * al mio avatar. Definisco quindi anche le armi che utilizzerò. */
     public Player(double xPos, double yPos, int width, int height, BasicBlocks blocks) {
         this.xPos = xPos;
         this.yPos = yPos;
@@ -47,21 +47,22 @@ public class Player implements KeyListener {
         try {
             URL url = this.getClass().getResource("/com/covidinvaders/images/Player.png");
             pSprite = ImageIO.read(url);
-        } catch (IOException e) {
-        }
+        } catch (IOException e) {}
 
         this.blocks = blocks;
         playerWeapons = new PlayerWeapons();
 
     }
 
+    /* Si occupa di disegnare il player */
     public void draw(Graphics2D g) {
-
         g.drawImage(pSprite, (int) xPos, (int) yPos, width, height, null);
         playerWeapons.draw(g);
-
     }
 
+    /* Si occupa dello spostamento del player, modifica la posizione
+    * di un valore delta controllando non esca dal display. Fa l'update anche
+    * dell'arma del player e spara nel caso in cui avviene lo sparo. */
     public void update(double delta) {
         if (right && !left && xPos < Display.WIDTH - width) {
             xPos += speed * delta;
@@ -109,8 +110,10 @@ public class Player implements KeyListener {
         }
     }
 
+    /* Se la vita è maggiore di zero la decremento di 1 a ogni colpo del nemico */
     public void hit() {
-        setHealth(getHealth() - 1);
+        if (getHealth() > 0)
+            setHealth(getHealth() - 1);
     }
 
     public int getHealth() {
@@ -125,7 +128,7 @@ public class Player implements KeyListener {
         return rect;
     }
 
-    public void reset(){
+    public void reset() {
         health = 3;
         left = false;
         right = false;
@@ -134,7 +137,7 @@ public class Player implements KeyListener {
         xPos = startXPos;
         yPos = startYPos;
         rect.x = (int) xPos;
-        rect.y = (int) yPos+25;
+        rect.y = (int) yPos + 25;
         playerWeapons.reset();
     }
 }

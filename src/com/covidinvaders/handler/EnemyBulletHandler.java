@@ -9,6 +9,9 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/* Serve per gestire i proiettili dei nemici. Creo la lista delle armi,
+* al momento della collisione creo l'esplosione, rimuovo il proiettile e
+* decremento la vita del giocatore. */
 public class EnemyBulletHandler {
 
     private List<EnemyWeaponType> weaponTypes =  new ArrayList<>();

@@ -182,6 +182,7 @@ public class Level1 implements SuperLevel, Runnable {
     public void run() {
         while(running){
             finalRound.play();
+            finalRound.loop();
         }
     }
 }
